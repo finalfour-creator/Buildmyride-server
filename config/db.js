@@ -7,7 +7,12 @@ const connectDB = async () => {
   try {
     const mongoUri = process.env.MONGODB_URI || process.env.DATABASE_URL || "mongodb+srv://Furqan:Furqan@cluster0.lnt86oh.mongodb.net/BuildMyRide";
     
-    const conn = await mongoose.connect(mongoUri);
+    const conn = await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+      maxPoolSize: 10,
+      retryWrites: true,
+    });
 
     console.log(`✅ MongoDB Connected: ${conn.connection.host} and DB: ${conn.connection.name}`);
   } catch (error) {
