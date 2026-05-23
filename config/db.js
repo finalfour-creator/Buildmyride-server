@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect("mongodb+srv://Furqan:Furqan@cluster0.lnt86oh.mongodb.net/BuildMyRide");
+    const mongoUri = process.env.MONGODB_URI || process.env.DATABASE_URL || "mongodb+srv://Furqan:Furqan@cluster0.lnt86oh.mongodb.net/BuildMyRide";
+    
+    const conn = await mongoose.connect(mongoUri);
 
     console.log(`✅ MongoDB Connected: ${conn.connection.host} and DB: ${conn.connection.name}`);
   } catch (error) {
