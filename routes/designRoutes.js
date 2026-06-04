@@ -11,5 +11,6 @@ router.post("/", designController.createDesign);          // Initialize draft
 router.get("/", designController.getUserDesigns);        // List user's drafts
 router.get("/:id", designController.getDesignById);      // Resume draft
 router.put("/:id", designController.updateDesign);       // Update draft (Auto-save)
+router.delete("/:id", designController.deleteDesign);    // Delete design
 
 export default router;

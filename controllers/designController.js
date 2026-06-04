@@ -19,3 +19,8 @@ export const updateDesign = async (req, res) => {
   const design = await designService.updateDesign(req.params.id, req.user.id, req.body);
   res.status(200).json(design);
 };
+
+export const deleteDesign = async (req, res) => {
+  await designService.deleteDesign(req.params.id, req.user.id);
+  res.status(200).json({ message: "Design deleted" });
+};

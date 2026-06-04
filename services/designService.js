@@ -43,3 +43,10 @@ export const updateDesign = async (id, userId, { state, name, thumbnail }) => {
 
   return Design.findByIdAndUpdate(id, { state, name, thumbnail }, { new: true });
 };
+
+export const deleteDesign = async (id, userId) => {
+  const design = await Design.findById(id);
+  if (!design) throw createError(404, "Design not found");
+  if (design.userId.toString() !== userId) throw createError(403, "Forbidden");
+  await Design.findByIdAndDelete(id);
+};
