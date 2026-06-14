@@ -14,6 +14,8 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 app.use(helmet());
 
 // Parse allowed origins from environment variable
@@ -45,6 +47,8 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 app.use(limiter);
+
+app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);

@@ -5,8 +5,12 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    const mongoUri = process.env.MONGODB_URI || process.env.DATABASE_URL || "mongodb+srv://Furqan:Furqan@cluster0.lnt86oh.mongodb.net/BuildMyRide";
-    
+    const mongoUri = process.env.MONGODB_URI || process.env.DATABASE_URL;
+    if (!mongoUri) {
+      console.error("❌ MONGODB_URI environment variable is not set");
+      process.exit(1);
+    }
+
     const conn = await mongoose.connect(mongoUri, {
       serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000,
