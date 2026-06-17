@@ -24,8 +24,8 @@ const config = {
   AUTH_PLACEHOLDER_PASSWORD_HASH: process.env.AUTH_PLACEHOLDER_PASSWORD_HASH || "",
   CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || "http://localhost:3000",
   CLIENT_URL: process.env.CLIENT_URL || "http://localhost:3000",
-  RESEND_API_KEY: process.env.RESEND_API_KEY || "",
-  EMAIL_FROM: process.env.EMAIL_FROM || "BuildMyRide <onboarding@resend.dev>",
+  BREVO_API_KEY: process.env.BREVO_API_KEY || "",
+  EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS || "abmazhar9@gmail.com",
 };
 
 export default config;
