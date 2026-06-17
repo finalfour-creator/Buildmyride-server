@@ -56,11 +56,13 @@ export async function forgotPassword(req, res) {
 
   try {
     const user = await getUserByEmail(email);
+    console.log(`[forgotPassword] email="${email}" found=${!!user}`);
     if (user) {
       const resetToken = crypto.randomBytes(32).toString("hex");
       const resetTokenExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
       await User.findByIdAndUpdate(user.id, { resetToken, resetTokenExpiry });
       await sendPasswordResetEmail(email, resetToken);
+      console.log(`[forgotPassword] email sent to ${email}`);
     }
     // Always return 200 — never reveal whether the email exists
     return res.status(200).json({
