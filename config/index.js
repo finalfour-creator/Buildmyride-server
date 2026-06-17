@@ -23,6 +23,12 @@ const config = {
   AUTH_PLACEHOLDER_EMAIL: process.env.AUTH_PLACEHOLDER_EMAIL || "admin@example.com",
   AUTH_PLACEHOLDER_PASSWORD_HASH: process.env.AUTH_PLACEHOLDER_PASSWORD_HASH || "",
   CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+  CLIENT_URL: process.env.CLIENT_URL || "http://localhost:3000",
+  EMAIL_HOST: process.env.EMAIL_HOST || "smtp.gmail.com",
+  EMAIL_PORT: Number(process.env.EMAIL_PORT) || 587,
+  EMAIL_USER: process.env.EMAIL_USER || "",
+  EMAIL_PASS: process.env.EMAIL_PASS || "",
+  EMAIL_FROM: process.env.EMAIL_FROM || "BuildMyRide <noreply@buildmyride.com>",
 };
 
 export default config;
