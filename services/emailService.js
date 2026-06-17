@@ -1,21 +1,13 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import config from "../config/index.js";
 
-const transporter = nodemailer.createTransport({
-  host: config.EMAIL_HOST,
-  port: config.EMAIL_PORT,
-  secure: config.EMAIL_PORT === 465,
-  auth: {
-    user: config.EMAIL_USER,
-    pass: config.EMAIL_PASS,
-  },
-});
+const resend = new Resend(config.RESEND_API_KEY);
 
 export const sendPasswordResetEmail = async (toEmail, resetToken) => {
   const resetUrl = `${config.CLIENT_URL}/reset-password?token=${resetToken}`;
 
-  await transporter.sendMail({
-    from: config.EMAIL_FROM,
+  await resend.emails.send({
+    from: config.EMAIL_FROM || "BuildMyRide <onboarding@resend.dev>",
     to: toEmail,
     subject: "BuildMyRide — Password Reset Request",
     html: `
