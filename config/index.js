@@ -26,6 +26,7 @@ const config = {
   CLIENT_URL: process.env.CLIENT_URL || "http://localhost:3000",
   BREVO_API_KEY: process.env.BREVO_API_KEY || "",
   EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS || "abmazhar9@gmail.com",
+  GROQ_API_KEY: process.env.GROQ_API_KEY || "",
 };
 
 export default config;
